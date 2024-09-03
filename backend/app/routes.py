@@ -1,12 +1,14 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, make_response
 import os
 import librosa
 import numpy as np
 from .utils import extract_chords, allowed_file
+from flask_cors import CORS, cross_origin
 
 main = Blueprint('main', __name__)
 
-@main.route('/upload', methods=['POST'])
+
+@main.route('/upload', methods=['POST','OPTIONS'])
 def upload_file():
     print("The Request \n", request.files)
     # if 'file' not in request.files:
@@ -19,7 +21,7 @@ def upload_file():
 
     if file and allowed_file(file.filename):
         filename = file.filename
-        print(type(filename))
+   
 
         # file_path = os.path.join(os.getenv('UPLOAD_FOLDER'), filename)
         file_path = './uploads/audio.mp3'
