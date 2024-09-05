@@ -9,6 +9,10 @@ import tempfile
 main = Blueprint('main', __name__)
 
 
+@main.route('/')
+def home():
+    return "API is up and running"
+
 @main.route('/upload', methods=['POST','OPTIONS'])
 def upload_file():
     print("The Request \n", request.files)
