@@ -5,8 +5,8 @@ import FileUpload from './components/FileUpload';
 
 function App() {
     return (
-        <div className="App">
-            <h1>Chordify App</h1>
+        <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+            <h1 className="text-4xl font-bold text-blue-500 mb-0">Chordify App</h1>
             <FileUpload />
             {/* <YoutubeLink /> */}
         </div>
