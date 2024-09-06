@@ -4,7 +4,7 @@ import axios from 'axios';
 function FileUpload() {
     const [file, setFile] = useState(null);
     const [chords, setChords] = useState([]);
-    const [isLoading, setIsLoading] = useState(false); // New state for loading status
+    const [isLoading, setIsLoading] = useState(false); 
 
     const onFileChange = (e) => {
         setFile(e.target.files[0]);
@@ -16,7 +16,7 @@ function FileUpload() {
             return;
         }
 
-        setIsLoading(true); // Set loading to true before starting the upload
+        setIsLoading(true); 
 
         const formData = new FormData();
         formData.append("file", file);
@@ -24,13 +24,13 @@ function FileUpload() {
         //axios.post('http://127.0.0.1:5000/upload', formData)
         axios.post('https://chordgetter-flaskbackend-5c25f170aab7.herokuapp.com/upload', formData)
             .then(response => {
-                setChords(response.data.chords.slice(0, 10)); // Display only the first 10 chords
+                setChords(response.data.chords.slice(0, 10)); 
             })
             .catch(error => {
                 console.error(error);
             })
             .finally(() => {
-                setIsLoading(false); // Set loading to false after upload completes
+                setIsLoading(false); 
             });
     };
 
@@ -58,9 +58,9 @@ function FileUpload() {
                 <button 
                     onClick={onFileUpload} 
                     className="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300"
-                    disabled={isLoading} // Disable the button while loading
+                    disabled={isLoading} 
                 >
-                    {isLoading ? "Uploading..." : "Upload"}  {/* Show "Uploading..." when loading */}
+                    {isLoading ? "Uploading..." : "Upload"}  
                 </button>
             </div>
             
