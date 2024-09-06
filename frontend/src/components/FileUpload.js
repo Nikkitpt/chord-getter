@@ -21,7 +21,8 @@ function FileUpload() {
         const formData = new FormData();
         formData.append("file", file);
 
-        axios.post('http://127.0.0.1:5000/upload', formData)
+        // axios.post('http://127.0.0.1:5000/upload', formData)
+        axios.post('https://chordgetter-flaskbackend-5c25f170aab7.herokuapp.com/upload', formData)
             .then(response => {
                 setChords(response.data.chords.slice(0, 10)); // Display only the first 10 chords
             })

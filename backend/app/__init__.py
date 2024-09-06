@@ -6,7 +6,7 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
     
-    CORS(app, resources={r"/*": {"origins": "http://localhost:3000/"}})
+    CORS(app)
 
 
     # Register your blueprint after CORS setup
