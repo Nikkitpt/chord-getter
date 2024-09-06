@@ -15,6 +15,13 @@ def home():
 
 @main.route('/upload', methods=['POST','OPTIONS'])
 def upload_file():
+    if request.method == 'OPTIONS':
+    # Send CORS headers for preflight request
+        response = make_response()
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        response.headers.add("Access-Control-Allow-Headers", "Content-Type,Authorization")
+        response.headers.add("Access-Control-Allow-Methods", "OPTIONS, POST")
+        return response
     print("The Request \n", request.files)
 
     file = request.files.get('file')
