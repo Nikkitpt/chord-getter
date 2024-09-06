@@ -31,7 +31,10 @@ def upload_file():
         try:
             # Process the file
             chords = extract_chords(temp_file_path)
-            return jsonify({'chords': chords}), 200
+            # return jsonify({'chords': chords}), 200
+            response = make_response(jsonify({"message": "Upload route working"}))
+            response.headers.add("Access-Control-Allow-Origin", "http://localhost:3000")
+            return response
         finally:
             # Clean up the temp file after processing
             os.remove(temp_file_path)
