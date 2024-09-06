@@ -22,6 +22,7 @@ def upload_file():
         response.headers.add("Access-Control-Allow-Headers", "Content-Type,Authorization")
         response.headers.add("Access-Control-Allow-Methods", "OPTIONS, POST")
         return response
+    
     print("The Request \n", request.files)
 
     file = request.files.get('file')
